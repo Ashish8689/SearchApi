@@ -249,6 +249,9 @@ transform:translateX(-50%);
 }
 
 
+.nodata{
+  color: whitesmoke;
+}
 
 
 @media (max-width:768px){

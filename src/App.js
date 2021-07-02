@@ -45,12 +45,12 @@ function App() {
     fetchdata();
   },[])
 
-  
+
 
   // ***************   Filter name  ******************
 
   useEffect(() => {
-    const filterarray = users.filter(user => user.firstName.toLowerCase().indexOf(input) != -1);
+    const filterarray = users.filter(user => user.firstName.toLowerCase().indexOf(input.toLowerCase()) != -1);
     setsingleuser(filterarray);
   }, [input])
 
@@ -69,14 +69,19 @@ function App() {
 
               <div className="userblock-container">
 
-                  {singleusers.length == 0 ? (
+                  {input.length == 0 ? (
                        users.map(user =>(
                         <UserBlock key={user.id} user={user} />
                       ))
                   ) : (
-                      singleusers.map(user => (
-                         <UserBlock key={user.id} user={user} />
-                      ))
+                     singleusers.length == 0 ?(
+                         <h1 className="nodata">No Data found !!!</h1>
+                     ) : (
+                        singleusers.map(user => (
+                          <UserBlock key={user.id} user={user} />
+                      ))  
+                     )
+
                   )}
 
               </div> 
